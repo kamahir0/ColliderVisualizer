@@ -16,6 +16,7 @@ namespace ColliderVisualizer.Editor
         }
 
         private ColliderVisualizerFeature _feature;
+        private Vector2 _scrollPosition;
 
         private void OnEnable()
         {
@@ -24,6 +25,8 @@ namespace ColliderVisualizer.Editor
 
         private void OnGUI()
         {
+            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+
             if (_feature == null)
             {
                 _feature = ColliderVisualizerUtility.GetFeature();
@@ -37,6 +40,8 @@ namespace ColliderVisualizer.Editor
             {
                 EditorGUILayout.HelpBox("ColliderVisualizerFeature が見つかりません。Universal Render Pipeline Asset を確認してください。", MessageType.Info);
                 DrawSelectRenderPipelineAssetButton();
+
+                EditorGUILayout.EndScrollView();
                 return;
             }
 
@@ -58,6 +63,8 @@ namespace ColliderVisualizer.Editor
 
             // 現在ColliderManager内にあるコライダーのリスト
             DrawColliderLists();
+
+            EditorGUILayout.EndScrollView();
         }
 
         // ColliderVisualizerFeatureのインスペクタを描画
