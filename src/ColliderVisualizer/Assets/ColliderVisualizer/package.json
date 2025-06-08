@@ -1,0 +1,12 @@
+{
+    "name": "com.kamahir0.collider-visualizer",
+    "version": "0.1.0",
+    "displayName": "Collider Visualizer",
+    "description": "A Unity collider visualization tool built with ScriptableRendererFeature, designed for URP RenderGraph.",
+    "unity": "6.0",
+    "dependencies": {},
+    "author": {
+        "name": "kamahir0",
+        "url": "https://x.com/kamahir0"
+    }
+}
