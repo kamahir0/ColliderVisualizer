@@ -119,8 +119,8 @@ MonoBehaviour:
   _collisionColor: {r: 0, g: 1, b: 0, a: 1}
   _visualizeTriggers: 1
   _triggerColor: {r: 0, g: 0, b: 1, a: 1}
-  _alpha: 0.44134173
-  _meshQuality: 1
+  _alpha: 0.5
+  _meshQuality: 4
 --- !u!114 &1002035807535710140
 MonoBehaviour:
   m_ObjectHideFlags: 0
