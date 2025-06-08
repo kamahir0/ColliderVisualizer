@@ -32,7 +32,7 @@ namespace ColliderVisualizer.Editor
                 _feature = ColliderVisualizerUtility.GetFeature();
             }
 
-            GUILayout.Label("Collider Visualizer Settings", EditorStyles.boldLabel);
+            GUILayout.Label("Collider Visual Settings", EditorStyles.boldLabel);
             EditorGUILayout.Space();
 
 
