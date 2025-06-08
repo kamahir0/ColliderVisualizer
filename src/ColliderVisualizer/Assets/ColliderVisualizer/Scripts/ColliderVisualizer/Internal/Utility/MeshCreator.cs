@@ -82,8 +82,8 @@ namespace ColliderVisualizer
                 quality = 1;
             }
 
-            int latitudeSegments = quality * 10 + 1;
-            int longitudeSegments = quality * 20 + 2;
+            int latitudeSegments = quality * 1 + 1;
+            int longitudeSegments = quality * 2 + 2;
 
             Mesh mesh = new Mesh();
             List<Vector3> vertices = new List<Vector3>();
@@ -145,7 +145,7 @@ namespace ColliderVisualizer
                 quality = 1;
             }
 
-            int longitudeSegments = quality * 20 + 2;
+            int longitudeSegments = quality * 2 + 2;
 
             Mesh mesh = new Mesh();
             List<Vector3> vertices = new List<Vector3>();
