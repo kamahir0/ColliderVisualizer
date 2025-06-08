@@ -286,14 +286,14 @@ namespace ColliderVisualizer
                     DrawBoxColliders(cmd, passData.BoxMesh, collisionMaterial, passData.BoxCollidersCollision);
                     DrawSphereColliders(cmd, passData.SphereMesh, collisionMaterial, passData.SphereCollidersCollision);
                     DrawCapsuleColliders(cmd, passData.HemisphereMesh, passData.TubeMesh, collisionMaterial, passData.CapsuleCollidersCollision);
-                    DrawMeshCollidersOptimized(cmd, collisionMaterial, passData.MeshColliderGroupsCollision);
+                    DrawMeshColliders(cmd, collisionMaterial, passData.MeshColliderGroupsCollision);
                 }
                 if (passData.VisualizeTriggers)
                 {
                     DrawBoxColliders(cmd, passData.BoxMesh, triggerMaterial, passData.BoxCollidersTrigger);
                     DrawSphereColliders(cmd, passData.SphereMesh, triggerMaterial, passData.SphereCollidersTrigger);
                     DrawCapsuleColliders(cmd, passData.HemisphereMesh, passData.TubeMesh, triggerMaterial, passData.CapsuleCollidersTrigger);
-                    DrawMeshCollidersOptimized(cmd, triggerMaterial, passData.MeshColliderGroupsTrigger);
+                    DrawMeshColliders(cmd, triggerMaterial, passData.MeshColliderGroupsTrigger);
                 }
             }
             catch(MissingReferenceException)
@@ -478,7 +478,7 @@ namespace ColliderVisualizer
         /// <summary>
         /// MeshColliderの描画
         /// </summary>
-        private static void DrawMeshCollidersOptimized(IRasterCommandBuffer cmd, Material material, Dictionary<Mesh, List<MeshCollider>> meshGroups)
+        private static void DrawMeshColliders(IRasterCommandBuffer cmd, Material material, Dictionary<Mesh, List<MeshCollider>> meshGroups)
         {
             if (material == null || meshGroups == null) return;
 
