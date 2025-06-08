@@ -26,6 +26,12 @@ namespace ColliderVisualizer
         /// <inheritdoc />
         public override void Create()
         {
+            if (ColliderVisualizerUtility.IsMetal && ColliderVisualizerUtility.IsMSAAEnabled)
+            {
+                Debug.LogWarning("MSAAが有効なiOSビルドではColliderVisualizerは動作しません。MSAAをDisableにすることで使用可能になります");
+                return;
+            }
+            
             var settings = new ColliderVisualSettings(
                 _visualizeCollisions, 
                 _collisionColor, 
@@ -34,6 +40,7 @@ namespace ColliderVisualizer
                 _alpha, 
                 _meshQuality);
             _pass = new ColliderVisualizePass(settings);
+            
 #if UNITY_EDITOR
             OnCreateEditor();
 #endif
@@ -42,6 +49,7 @@ namespace ColliderVisualizer
         /// <inheritdoc />
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
+            if (ColliderVisualizerUtility.IsMetal && ColliderVisualizerUtility.IsMSAAEnabled) return;
             renderer.EnqueuePass(_pass);
         }
 
