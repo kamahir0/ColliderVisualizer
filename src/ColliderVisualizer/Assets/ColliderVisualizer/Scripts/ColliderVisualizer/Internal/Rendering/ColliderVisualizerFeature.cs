@@ -17,6 +17,8 @@ namespace ColliderVisualizer
         [SerializeField] private Color _triggerColor = Color.blue;
         [Range(0, 1), SerializeField] private float _alpha = 0.5f;
         [Range(1, 10), SerializeField] private int _meshQuality = 4;
+        [Space]
+        [SerializeField] private bool _disableRenderGraph;
 
         private ColliderVisualizePassBase _pass;
         
@@ -33,11 +35,8 @@ namespace ColliderVisualizer
                 _triggerColor, 
                 _alpha, 
                 _meshQuality);
-            
-            Debug.Log($"IsMetal: {ColliderVisualizerUtility.IsMetal}");
-            Debug.Log($"IsMSAAEnabled: {ColliderVisualizerUtility.IsMSAAEnabled}");
 
-            var useLegacy = ColliderVisualizerUtility.IsMetal && ColliderVisualizerUtility.IsMSAAEnabled;
+            var useLegacy = _disableRenderGraph || (ColliderVisualizerUtility.IsMetal && ColliderVisualizerUtility.IsMSAAEnabled);
             _pass = useLegacy ? new LegacyColliderVisualizePass(settings) : new RenderGraphColliderVisualizePass(settings);
             
 #if UNITY_EDITOR
