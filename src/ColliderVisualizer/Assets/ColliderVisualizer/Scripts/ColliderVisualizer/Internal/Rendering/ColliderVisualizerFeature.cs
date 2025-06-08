@@ -18,7 +18,7 @@ namespace ColliderVisualizer
         [Range(0, 1), SerializeField] private float _alpha = 0.5f;
         [Range(1, 10), SerializeField] private int _meshQuality = 4;
 
-        private ColliderVisualizePass _pass;
+        private ColliderVisualizePassBase _pass;
         
         /// <summary> 現在の設定 </summary>
         public ColliderVisualSettings Settings => new(_visualizeCollisions, _collisionColor, _visualizeTriggers, _triggerColor, _alpha, _meshQuality);
@@ -33,7 +33,13 @@ namespace ColliderVisualizer
                 _triggerColor, 
                 _alpha, 
                 _meshQuality);
-            _pass = new ColliderVisualizePass(settings);
+            
+            Debug.Log($"IsMetal: {ColliderVisualizerUtility.IsMetal}");
+            Debug.Log($"IsMSAAEnabled: {ColliderVisualizerUtility.IsMSAAEnabled}");
+
+            var useLegacy = ColliderVisualizerUtility.IsMetal && ColliderVisualizerUtility.IsMSAAEnabled;
+            _pass = useLegacy ? new LegacyColliderVisualizePass(settings) : new RenderGraphColliderVisualizePass(settings);
+            
 #if UNITY_EDITOR
             OnCreateEditor();
 #endif

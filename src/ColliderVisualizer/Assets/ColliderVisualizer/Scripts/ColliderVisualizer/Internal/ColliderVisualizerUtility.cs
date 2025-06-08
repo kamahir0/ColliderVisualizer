@@ -63,8 +63,7 @@ namespace ColliderVisualizer
 #if UNITY_IOS && !UNITY_EDITOR
             SystemInfo.graphicsDeviceType == GraphicsDeviceType.Metal;
 #else
-            //false;
-            true; // 一旦試す
+            false;
 #endif
 
         /// <summary>
