@@ -55,5 +55,32 @@ namespace ColliderVisualizer
             mat.enableInstancing = true;
             return mat;
         }
+        
+        /// <summary>
+        /// 実機で Metal 環境であるか
+        /// </summary>
+        public static bool IsMetal =>
+#if UNITY_IOS && !UNITY_EDITOR
+            SystemInfo.graphicsDeviceType == GraphicsDeviceType.Metal;
+#else
+            //false;
+            true; // 一旦試す
+#endif
+
+        /// <summary>
+        /// 現在使用中のレンダーパイプライン設定で MSAA が有効になっているか
+        /// </summary>
+        public static bool IsMSAAEnabled
+        {
+            get
+            {
+                if (GraphicsSettings.currentRenderPipeline is UniversalRenderPipelineAsset urp)
+                {
+                    return urp.msaaSampleCount > 1;
+                }
+
+                return false;
+            }
+        }
     }
 }
